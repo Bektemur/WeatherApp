@@ -1,6 +1,6 @@
 import 'Fact.dart';
 import 'Info.dart';
-import 'Forecast.dart';
+import 'Forecasts.dart';
 
 class Weather {
   int now;

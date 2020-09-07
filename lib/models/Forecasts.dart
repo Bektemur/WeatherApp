@@ -1,14 +1,17 @@
+import 'package:WeatherApp/services/services.dart';
+
 class Forecasts {
   String date;
-  int dateTs;
-  int week;
+  dynamic dateTs;
+  dynamic week;
   String sunrise;
   String sunset;
   String riseBegin;
   String setEnd;
-  int moonCode;
+  dynamic moonCode;
   String moonText;
   Parts parts;
+  dynamic tempmin;
   List<Hours> hours;
 
   Forecasts(
@@ -22,7 +25,8 @@ class Forecasts {
       this.moonCode,
       this.moonText,
       this.parts,
-      this.hours});
+      this.hours,
+      this.tempmin});
 
   Forecasts.fromJson(Map<String, dynamic> json) {
     date = json['date'];
@@ -34,6 +38,7 @@ class Forecasts {
     setEnd = json['set_end'];
     moonCode = json['moon_code'];
     moonText = json['moon_text'];
+    tempmin = json['temp_min'];
     parts = json['parts'] != null ? new Parts.fromJson(json['parts']) : null;
     if (json['hours'] != null) {
       hours = new List<Hours>();
@@ -54,6 +59,7 @@ class Forecasts {
     data['set_end'] = this.setEnd;
     data['moon_code'] = this.moonCode;
     data['moon_text'] = this.moonText;
+    data['temp_min'] = this.tempmin;
     if (this.parts != null) {
       data['parts'] = this.parts.toJson();
     }
@@ -62,6 +68,10 @@ class Forecasts {
     }
     return data;
   }
+}
+
+String getIconUrl() {
+  return WeatherApi.WEATHER_IMAGES_URL;
 }
 
 class Parts {
@@ -121,29 +131,28 @@ class Parts {
 
 class Night {
   String sSource;
-  int tempMin;
-  int tempMax;
-  int tempAvg;
-  int feelsLike;
+  dynamic tempMin;
+  dynamic tempMax;
+  dynamic tempAvg;
+  dynamic feelsLike;
   String icon;
   String condition;
   String daytime;
   bool polar;
-  double windSpeed;
-  double windGust;
+  dynamic windGust;
   String windDir;
-  int pressureMm;
-  int pressurePa;
-  int humidity;
-  int uvIndex;
-  int soilTemp;
-  double soilMoisture;
-  double precMm;
-  int precPeriod;
-  int precProb;
-  int precType;
-  double precStrength;
-  double cloudness;
+  dynamic pressureMm;
+  dynamic pressurePa;
+  dynamic humidity;
+  dynamic uvIndex;
+  dynamic soilTemp;
+  dynamic soilMoisture;
+  dynamic precMm;
+  dynamic precPeriod;
+  dynamic precProb;
+  dynamic precType;
+  dynamic precStrength;
+  dynamic cloudness;
 
   Night(
       {this.sSource,
@@ -155,7 +164,6 @@ class Night {
       this.condition,
       this.daytime,
       this.polar,
-      this.windSpeed,
       this.windGust,
       this.windDir,
       this.pressureMm,
@@ -181,7 +189,6 @@ class Night {
     condition = json['condition'];
     daytime = json['daytime'];
     polar = json['polar'];
-    windSpeed = json['wind_speed'];
     windGust = json['wind_gust'];
     windDir = json['wind_dir'];
     pressureMm = json['pressure_mm'];
@@ -209,7 +216,6 @@ class Night {
     data['condition'] = this.condition;
     data['daytime'] = this.daytime;
     data['polar'] = this.polar;
-    data['wind_speed'] = this.windSpeed;
     data['wind_gust'] = this.windGust;
     data['wind_dir'] = this.windDir;
     data['pressure_mm'] = this.pressureMm;
@@ -230,25 +236,25 @@ class Night {
 
 class DayShort {
   String sSource;
-  int temp;
-  int tempMin;
-  int feelsLike;
+  dynamic temp;
+  dynamic tempMin;
+  dynamic feelsLike;
   String icon;
   String condition;
-  double windSpeed;
-  double windGust;
+  dynamic windSpeed;
+  dynamic windGust;
   String windDir;
-  int pressureMm;
-  int pressurePa;
-  int humidity;
-  int uvIndex;
-  int soilTemp;
-  double soilMoisture;
-  double precMm;
-  int precProb;
-  int precType;
-  double precStrength;
-  double cloudness;
+  dynamic pressureMm;
+  dynamic pressurePa;
+  dynamic humidity;
+  dynamic uvIndex;
+  dynamic soilTemp;
+  dynamic soilMoisture;
+  dynamic precMm;
+  dynamic precProb;
+  dynamic precType;
+  dynamic precStrength;
+  dynamic cloudness;
 
   DayShort(
       {this.sSource,
@@ -322,24 +328,24 @@ class DayShort {
 }
 
 class NightShort {
-  int temp;
-  int feelsLike;
+  dynamic temp;
+  dynamic feelsLike;
   String icon;
   String condition;
-  double windSpeed;
-  double windGust;
+  dynamic windSpeed;
+  dynamic windGust;
   String windDir;
-  int pressureMm;
-  int pressurePa;
-  int humidity;
-  int uvIndex;
-  int soilTemp;
-  double soilMoisture;
-  double precMm;
-  int precProb;
-  int precType;
-  double precStrength;
-  double cloudness;
+  dynamic pressureMm;
+  dynamic pressurePa;
+  dynamic humidity;
+  dynamic uvIndex;
+  dynamic soilTemp;
+  dynamic soilMoisture;
+  dynamic precMm;
+  dynamic precProb;
+  dynamic precType;
+  dynamic precStrength;
+  dynamic cloudness;
 
   NightShort(
       {this.temp,
@@ -408,26 +414,26 @@ class NightShort {
 
 class Hours {
   String hour;
-  int hourTs;
-  int temp;
-  int feelsLike;
+  dynamic hourTs;
+  dynamic temp;
+  dynamic feelsLike;
   String icon;
   String condition;
-  double windSpeed;
-  double windGust;
+  dynamic windSpeed;
+  dynamic windGust;
   String windDir;
-  int pressureMm;
-  int pressurePa;
-  int humidity;
-  int uvIndex;
-  int soilTemp;
-  double soilMoisture;
-  double precMm;
-  int precPeriod;
-  int precProb;
-  double cloudness;
-  int precType;
-  double precStrength;
+  dynamic pressureMm;
+  dynamic pressurePa;
+  dynamic humidity;
+  dynamic uvIndex;
+  dynamic soilTemp;
+  dynamic soilMoisture;
+  dynamic precMm;
+  dynamic precPeriod;
+  dynamic precProb;
+  dynamic cloudness;
+  dynamic precType;
+  dynamic precStrength;
   bool isThunder;
   bool bNowcast;
 
