@@ -1,26 +1,28 @@
+import 'package:WeatherApp/services/services.dart';
+
 class Fact {
-  int temp;
-  int feelsLike;
+  dynamic temp;
+  dynamic feelsLike;
   String icon;
   String condition;
-  int windSpeed;
+  dynamic windSpeed;
   double windGust;
   String windDir;
-  int pressureMm;
-  int pressurePa;
-  int humidity;
-  int uvIndex;
-  int soilTemp;
+  dynamic pressureMm;
+  dynamic pressurePa;
+  dynamic humidity;
+  dynamic uvIndex;
+  dynamic soilTemp;
   double soilMoisture;
   String daytime;
   bool polar;
   String season;
-  int obsTime;
+  dynamic obsTime;
   AccumPrec accumPrec;
   String source;
-  int cloudness;
-  int precType;
-  int precStrength;
+  dynamic cloudness;
+  dynamic precType;
+  dynamic precStrength;
   bool isThunder;
   String sMode;
 
@@ -49,6 +51,10 @@ class Fact {
       this.precStrength,
       this.isThunder,
       this.sMode});
+
+  String getIconUrl() {
+    return WeatherApi.WEATHER_IMAGES_URL;
+  }
 
   Fact.fromJson(Map<String, dynamic> json) {
     temp = json['temp'];
