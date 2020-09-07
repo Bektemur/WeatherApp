@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 class Util {
   static String getFormattedDate(DateTime dateTime) {
-    return DateFormat('EEE, M/d/y').format(dateTime); // Tue, May 5, 2020
+    return DateFormat('dd-MM-yyyy').format(dateTime); // Tue, May 5, 2020
   }
 
   static getItem(IconData iconData, int value, String units) {
@@ -29,7 +29,6 @@ class Util {
 Widget forecastCard(AsyncSnapshot snapshot, int index) {
   var forecastList = snapshot.data.forecasts;
   var dayOfWeek = '';
-  var tempDayMin = '';
 
   var fullDate = forecastList[index].date;
   dayOfWeek = fullDate.split(',')[0]; // Tue
@@ -43,7 +42,7 @@ Widget forecastCard(AsyncSnapshot snapshot, int index) {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            Util.getFormattedDate(DateTime.parse(dayOfWeek)),
+            dayOfWeek,
             style: TextStyle(fontSize: 20, color: Colors.limeAccent),
           ),
         ),
